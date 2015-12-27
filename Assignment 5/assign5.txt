@@ -1,0 +1,228 @@
+Assignment 5: Searching/Sorting Tasks & Efficiency Analysis
+
+Problem 1)
+
+1. Trace selection sort on the following array of letters (sort into alphabetical order):
+	Initial Array: M U E J R Q X B
+	
+	First Pass: B U E J R Q X M
+		Start index 0, 7 comparisons.
+		
+		With the first pass, we start at index 0 and go through each
+		element in index 0 to compare ABC order. The array compares
+		the char in the index with U, E, J, R, Q, X, and B for a total
+		of 7 comparisons performed. 
+	
+	Second Pass: B E U J R Q X M
+		Start index 1, 6 comparisons.
+		
+		With the second pass, we start at index 1 and go through each
+		element after index 1. The array compares the char in index 1
+		with E, J, R, Q, X, and M for a total of 6 comparisons.
+	
+	Third Pass: B E J U R Q X M
+		Start index 2, 5 comparisons.
+
+		With the third pass, we start at index 2 and go through each
+		element after index 2. The array compares the char in index 2
+		with J, R, Q, X, and M for a total of 5 comparisons.
+
+	Fourth Pass: B E J M R Q X U
+		Start index 3, 4 comparisons.
+
+		With the fourth pass, we start at index 3 and go through each
+		element after index 3. The array compares the char in index 3
+		with R, Q, X, and M for a total of 4 comparisons.
+
+	Fifth Pass: B E J M Q R X U
+		Start index 4, 3 comparisons.
+
+		With the fifth pass, we start at index 4 and go through each
+		element after index 4. The array compares the char in index 4
+		with Q, X, and M for a total of 3 comparisons.
+
+	Sixth Pass: B E J M Q R X U
+		Start index 5, 2 comparisons.
+
+		With the sixth pass, we start at index 5 and go through each
+		element after index 5. The array compares the char in index 5
+		with X, and M for a total of 2 comparisons.
+
+	Seventh Pass: B E J M Q R U X
+		Start index 6, 1 comparison.
+
+		With the seventh pass, we start at index 6 and go through each
+		element after index 6. The array compares the char in index 6
+		with M for a total of 1 comparison.
+
+	Selection Sort # of Passes: 7
+
+2. Trace insertion sort on the following array of letters (sort into alphabetical order).
+	Initial Array: M U E J R Q X B
+
+	Insertion sort essentially divides the array into 2 parts. You are sorting the array
+	by taking the next element to be compared in the outer loop to compare it with the
+	current sorted array.
+
+	First Pass: 	M U
+		Compare char at index 1. Number of comparisons: 1
+
+	Second Pass: 	E M U
+		Compare char at index 2. Number of comparisons: 1
+
+	Third Pass: 	E J M U
+		Compare char at index 3. Number of comparisons: 2
+
+	Fourth Pass: 	E J M R U
+		Compare char at index 4. Number of comparisons: 4
+
+	Fifth Pass: 	E J M Q R U
+		Compare char at index 5. Number of comparisons: 4
+
+	Sixth Pass: 	E J M Q R U X
+		Compare char at index 6. Number of comparisons: 6
+
+	Seventh Pass: 	B E J M Q R U X
+		Compare char at index 7. Number of comparisons: 1
+---------------------------------------------------------------------------------------------
+Problem 2)
+
+A) Determine if 2 arrays contain the same elements
+	
+	1) Create an algorithm to solve the problem.
+		- Since it is going through every element in the array for each array, it is very similar to selection sort's algorithm. It is going through
+		  every element in array 2 in order to compare the element that was chosen in array 1. The program loops over indices in the array.
+		  For each index, the program is to add 1 to the number of duplicates and also keep track of the index that it is on. Since the array is
+		  comparing an element with every other index in array 2 and then going onto the next. We can say that the loop to compare this goes through
+		  the summation of n + (n-1) + (n-2) + (n-3) + ... + (n-n). However, this is similar to an arithemetic series. There are n amount of numbers
+		  and n/2 amount of pairs to add them as a sum. So the algorithm surround this program would be (n+1)(n/2), which is simplified to n(n+1)/2.
+		
+	
+	2) Identify the factors that would influence the running time, and which can be known before the algorithm or code is executed. Assign names (such as n) to each factor.
+		- Calling and setting the index containing the char in array 1.
+			- The number of iterations of setting the index first starts with n, then n-1, then n-2, and so on and so forth. This can be known as (n+1)(n/2),
+			  which is known as the summation of these n values.
+
+		- A counter to keep track if the element exists in the array or not, then add 1 if true.
+			- Adding the count for each match always happens once everytime a match is found, so it is n times.
+
+		- the time for the "selection sort" loop to run.
+			- the loop only runs once after everytime the indexes have been went through. This loop is also n times.
+
+	3) Identify the operations that must be counted. You need not count every statement separately. If a group of statements always executes together, treat the group as a single unit.
+	   If a method is called, and you do not know the running time of that method, count it as a single operation.
+		- Calling and setting the index containing the element is considered as n(n+1)/2
+		- Adding one to the count of duplicates counts as n
+		- The loop runs altogether as one operation, so it counts as one operation, also as n.
+
+	4) Count operations by code
+		element = n(n+1)/2
+		counter = n 
+		loop = n
+
+	5) Determine best and worst case
+		Worst case: if the array 2 is all in descending order. This will require the code to go through every element to finally find its match.
+
+		Best case: if array 1's order of elements matches the order in array 2
+
+	6)Put into Big O
+		The Big-O for selection sort is n^2. We take out the constants
+		which are the denominator of 2 and and the n that is not squared
+		(if you expand n(n+1), it leaves you with n^2 + n, so we eliminate
+		n because there is no significance to it). We get the answer n^2 as
+		the biggest magnitude.	
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+B) Counting total number characters that have a duplicate within a string (i.e. "gigi the gato" would result in 7 (g x 3 + i x 2 + t x 2) 13 chars.
+
+	1) Create an algorithm to solve the problem.
+		- Since it is going through every char in the string, it is very similar to selection sort. The program loops over indices in the array.
+		  For each index, the program is to add 1 to the number of duplicates and also keep track of the index that it is on. Since the array is
+		  comparing a char with every other index in the string and then going to the next. We can say that the loop to compare this goes through
+		  the summation of n + (n-1) + (n-2) + (n-3) + ... + (n-n). However, this is similar to an arithemetic series. There are n amount of numbers
+		  and n/2 amount of pairs to add them as a sum. So the algorithm surround this program would be (n+1)(n/2), which is simplified to n(n+1)/2.
+		
+	
+	2) Identify the factors that would influence the running time, and which can be known before the algorithm or code is executed. Assign names (such as n) to each factor.
+		- Calling and setting the index containing the char.
+			- The number of iterations of setting the index first starts with n, then n-1, then n-2, and so on and so forth. This can be known as (n+1)(n/2),
+			  which is known as the summation of these n values.
+
+		- Adding one to the count of duplicates containing that char.
+			- Adding the count for each duplicate always happens once everytime a duplicate is found, so it is n times.
+
+		- the time for the "selection sort loop" to run.
+			- the loop only runs once after everytime the indexes have been went through. This loop is also n times.
+
+	3) Identify the operations that must be counted. You need not count every statement separately. If a group of statements always executes together, treat the group as a single unit.
+	   If a method is called, and you do not know the running time of that method, count it as a single operation.
+		- Calling and setting the index containing the char is considered as n(n+1)/2
+		- Adding one to the count of duplicates counts as n
+		- The selection sort loop runs altogether, so it counts as one operation, also as n.
+
+	4) Count operations by code
+		Char = n(n+1)/2
+		duplicate counter = n 
+		loop = n
+
+	5) Determine best and worst case
+		Worst case: if the array is all in descending order. This will require the code to go through every element to sort it.
+
+		Best case: if the array is already in order.
+
+	6)Put into Big O
+		The Big-O for selection sort is n^2. We take out the constants
+		which are the denominator of 2 and and the n that is not squared
+		(if you expand n(n+1), it leaves you with n^2 + n, so we eliminate
+		n because there is no significance to it). We get the answer n^2 as
+		the biggest magnitude.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+C) Finding an empty row in a 2-D array where empty is defined as an element with a 0 entry.
+	
+	1) Create an algorithm to solve the problem.
+		- This is the same concept. Since it is going through every row in the 2D array and attempting to find "0", it is the same as problem A in trying to find a match in the array.
+		  This is a nested for loop. The summation of attempts is n(n+1)/2
+		
+	
+	2) Identify the factors that would influence the running time, and which can be known before the algorithm or code is executed. Assign names (such as n) to each factor.
+		- Calling and setting the row to look into.
+			- The number of iterations of setting the index first starts with n, then n-1, then n-2, and so on and so forth. This can be known as (n+1)(n/2),
+			  which is known as the summation of these n values.
+
+		- Adding one to the count of empties for every element that is 0.
+			- Adding the count for each 0 always happens once everytime a 0 is found, so it is n times.
+
+		- the time for the loop to run.
+			- the loop only runs once after everytime the indexes have been went through. This loop is also n times.
+
+	3) Identify the operations that must be counted. You need not count every statement separately. If a group of statements always executes together, treat the group as a single unit.
+	   If a method is called, and you do not know the running time of that method, count it as a single operation.
+		- Calling and setting the row to look into is n(n+1)/2
+		- Adding one to the count of 0s counts as n
+		- The loop runs altogether, so it counts as one operation, also as n.
+
+	4) Count operations by code
+		row index = n(n+1)/2
+		0 counter = n 
+		loop = n
+
+	5) Determine best and worst case
+		Worst case: if no elements were empty, making it go through every every element and not returning anything
+
+		Best case: if the array was completely empty.
+
+	6)Put into Big O
+		The Big-O for selection sort is n^2. We take out the constants
+		which are the denominator of 2 and and the n that is not squared
+		(if you expand n(n+1), it leaves you with n^2 + n, so we eliminate
+		n because there is no significance to it). We get the answer n^2 as
+		the biggest magnitude.		
+		
+
+		
+	
+
+	

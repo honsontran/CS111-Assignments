@@ -1,0 +1,135 @@
+Problem analysis: Scores
+
+Problem:
+	Create a program that allows you to input how many judges there are
+	and their scores, but takes the highest and lowest scores out of the
+	average.
+
+Error Condition:
+	Cannot enter a negative score into the double field.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+	Cannot enter a fraction into the double field.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+	Cannot enter variables or any function into the input field,
+	even if the answer is a double.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+	Cannot enter a score more than 10.0.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+	Cannot have negative judges inputted.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+	Cannot enter a char or string into any input field.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+	
+	Cannot have less than 3 judges. The highest and lowest scores will be factored out.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+Test Cases:
+	Input:
+		1) Judges = 5, Scores = 5, 6, 10, 1, 6 
+		2) Judges = 3, Scores = -1, 9, 5, 5 
+		3) Judges = 6, Scores = 3, 5, 7, 8, 1, 11, 5
+	Expected Output:
+		1) RESULT: 5.666666666666667
+		2) RESULT: 5.0
+		3) RESULT: 5.0
+	Output:
+		1) RESULT: 5.666666666666667
+		2) RESULT: 5.0
+		3) RESULT: 5.0
+-----------------------------------------------------------------------------
+Problem Analysis: TwoSmallest
+
+Problem:
+	Create a program that will ask the user for a terminating number that
+	will end their input, and then lets you input as many numbers as desired
+	until the terminating number is inputted. From here, the program displays
+	the two smallest numbers in order from your entire input set.
+
+Error Conditions:
+	Cannot enter a fraction into the integer field.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter variables or any function into the input field,
+	even if the answer is an double.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter a char or string into any input field.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter the terminating number as the first number in the data set.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+Test Cases:
+	Inputs:
+		1) stop = 123; Input: 2, 4, 6, 3, 123
+		2) stop = 111; Input: 4, 5, 7, 3, 3453, 111
+		3) stop = 1111; Input: 7, 8, 7, 3, 3453, 1111
+	Expected Outputs:
+		1) RESULT: 2.0; RESULT: 3.0
+		2) RESULT: 3.0; RESULT: 4.0
+		3) RESULT: 3.0; RESULT: 8.0
+	Output:
+		1) RESULT: 2.0; RESULT: 3.0
+		2) RESULT: 3.0; RESULT: 4.0
+		3) RESULT: 3.0; RESULT: 8.0
+-----------------------------------------------------------------------------
+Problem Analysis: NthPrime
+
+Problem: Write a program that will ask the user to input the value n, which will show you
+	the nth prime number on the number line.
+
+Error Conditions:
+	Cannot enter a fraction into the integer field.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter variables or any function into the input field,
+	even if the answer is an double.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter a char or string into any input field.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter a double into the integer field.
+		Fix: the IO module resolves this by indictating that the input
+		is not an int.
+
+	Cannot enter a negative score into the int field.
+		Fix: IO.reportBadInput() resolves this by telling the user
+		to input a different value.
+
+	Cannot enter to find the 0th prime number.
+		Fix: System.out.println informs that the user that there is no
+		such thing as the 0th prime number and then IO.reportBadInput()
+		resolves this by telling the user to input a different value.
+
+Test Cases:
+	Inputs:
+		1) 10
+		2) 13
+		3) 39
+	Expected Output:
+		1) 29
+		2) 41
+		3) 167		
+	Output:
+		1) 29
+		2) 41
+		3) 167
